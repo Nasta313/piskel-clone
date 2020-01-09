@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" lang="en"/>
+    <title>Simple Pickel Clone</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+<link href="style.css" rel="stylesheet"></head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <a href="#" class="logo">
+                <img src="img/logo_transparent_small_compact.png" class="logo__image" alt="logo-image">
+            </a>
+            <nav class="navigation">
+                <a class="navigation__button" href="#" target="_blank">Create Sprite</a>
+                <a class="navigation__button" href="./index2.html">Sign in</a>
+            </nav>
+        </header>
+        <div class = "tools-section">
+            <div class="tools-section__pen-size" id="pen-size">
+                <div class="tools-section__pen-size-option" id="size1" data-size="1"></div>
+                <div class="tools-section__pen-size-option"  id="size2" data-size="2"></div>
+                <div class="tools-section__pen-size-option"  id="size3" data-size="3"></div>
+                <div class="tools-section__pen-size-option"  id="size4" data-size="4"></div>
+            </div>
+            <ul class="tools-section__list" id="tools">
+                <li class="tools-section__list-item" id="pensil-tool" data-info="pensil"></li>
+                <li class="tools-section__list-item" id="eraser-tool" data-info="eraser"></li>
+                <li class="tools-section__list-item" id="paint-tool" data-info="paint-bucket-area"></li>
+                <li class="tools-section__list-item" id="line-tool" data-info="stroke"></li>
+                <li class="tools-section__list-item" id="color-picker-tool" data-info="color-picker"></li>
+                <li class="tools-section__list-item" id="clear-tool" data-info="clear"></li>
+            </ul>
+            <div class="tools-section__color-preview">
+                <input type="color" class="tools-section__color-preview-item" id="chosen-color">
+                <div class="tools-section__button-change-color" id="change-colors"></div>
+                <input type="color" class="tools-section__color-preview-item" id="secondary-color">
+            </div>
+            <div class="tools-section__modal-window" id="modalBtn"></div>
+            <div class="modal-window" id="modal">
+                <div class="modal-window__content">
+                    <span class="modal-window__close">&times;</span>
+                    <div class="modal-window__commands">
+                        <p>Keyboard ShortCuts</p>
+                        <div class="modal-window__command-item"> 
+                            <div class="modal-window__icon" data-info="pensil"></div>
+                            <p class="modal-window__command-name">Pensil</p>
+                            <p class="modal-window__command-value">P</p>
+                            <input type="text" class="modal-window__hotkey-input" placeholder="New hotkey" maxlength="1">
+                        </div>
+                        <div class="modal-window__command-item"> 
+                            <div class="modal-window__icon" data-info="eraser"></div>
+                            <p class="modal-window__command-name">Eraser</p>
+                            <p class="modal-window__command-value">E</p>
+                            <input type="text" class="modal-window__hotkey-input" placeholder="New hotkey" maxlength="1">
+                        </div> 
+                        <div class="modal-window__command-item"> 
+                            <div class="modal-window__icon" data-info="paint-bucket-area"></div>
+                            <p class="modal-window__command-name">PaintBucket</p>
+                            <p class="modal-window__command-value">B</p>
+                            <input type="text" class="modal-window__hotkey-input" placeholder="New hotkey" maxlength="1">
+                        </div>  
+                        <div class="modal-window__command-item"> 
+                            <div class="modal-window__icon" data-info="stroke"></div>
+                            <p class="modal-window__command-name">Stroke</p>
+                            <p class="modal-window__command-value">S</p>
+                            <input type="text" class="modal-window__hotkey-input" placeholder="New hotkey" maxlength="1">
+                        </div>  
+                        <div class="modal-window__command-item"> 
+                            <div class="modal-window__icon" data-info="color-picker"></div>
+                            <p class="modal-window__command-name">ColorPicker</p>
+                            <p class="modal-window__command-value">C</p>
+                            <input type="text" class="modal-window__hotkey-input" placeholder="New hotkey" maxlength="1">
+                        </div> 
+                        <div class="modal-window__command-item"> 
+                            <div class="modal-window__icon" data-info="clear"></div>
+                            <p class="modal-window__command-name">ClearCanvas</p>
+                            <p class="modal-window__command-value">Q</p>
+                            <input type="text" class="modal-window__hotkey-input" placeholder="New hotkey" maxlength="1">
+                        </div> 
+                        <button class="modal-window__btn-hotkey" id = "hot-key-btn">Change hotkey</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = "main-section">
+            <div class="main-section__frames">
+                <div class="main-section__frame-content selected-frame">
+                    <div class="main-section__frame-item"></div>
+                    <div class="main-section__frame-number">1</div>
+                </div>
+                <div class="main-section__frame-content ">
+                    <div class="main-section__frame-item"></div>
+                    <div class="main-section__frame-number">2</div>
+                </div>
+                <div class="main-section__frame-content">
+                    <div class="main-section__frame-item"></div>
+                    <div class="main-section__frame-number">3</div>
+                </div>
+                <div class="main-section__add-frame-btn">Add new frame</div>
+            </div>
+            <div class="main-section__canvas-wrapper">
+                <div class="main-section__canvas-backgr">
+                <canvas class="main-section__canvas" id="canvas"></canvas>
+                </div>
+            </div>
+            <div class="main-section__right-col">
+                <div class="main-section__canvas-size">
+                    <div class="main-section__canvas-size-item" id="size32"><span>32</span></div>
+                    <div class="main-section__canvas-size-item" id="size64"><span>64</span></div>
+                    <div class="main-section__canvas-size-item" id="size128"><span>128</span></div>
+                </div>
+                <div>
+                    <button class="main-section__download-btn" id="btn-download">Download as .png</button>
+                </div>
+               
+            </div>
+        </div>
+        
+    </div>
+
+<script type="text/javascript" src="index.js"></script></body>
+
+</html>
